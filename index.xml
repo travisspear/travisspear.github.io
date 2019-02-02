@@ -25,10 +25,10 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     
     <item>
       <title></title>
-      <link>/travisspear_cv2019/</link>
+      <link>/travisspear_cv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/travisspear_cv2019/</guid>
+      <guid>/travisspear_cv/</guid>
       <description>AboutHigh level programmer developing efficient solutions to modern data problemsExperience creating intuitive, interactive, graphics using the latest technologyInterested in developing products to introduce real time analytics into healthcareCore SkillsLanguages : R, Python, SQL, JavaScript, Go
 Frameworks : Shiny, ggplot, Flask, Tensorflow, Keras
 Competencies : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics,
