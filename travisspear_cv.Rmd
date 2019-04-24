@@ -15,11 +15,9 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(vitae)
 ```
 
-# What I Do  
- * Develop efficient solutions to modern data problems
- * Create intuitive, interactive graphics that tell your data's story
- * Translate analytic findings into actionable business insights
- 
+# Summary
+As a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
+
 
 # Career Interests
  * Natural Language Processing
@@ -30,10 +28,9 @@ library(vitae)
 
 # Core Skills  
 **Primary Languages** : R, Python, SQL  
-**Other Languages** : JavaScript, Go, HTML, CSS  
-**Frameworks** : Shiny, ggplot, Flask, Tensorflow, Keras, Caret  
-**Competencies** : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics,  
-Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence  
+**Other Languages** : JavaScript, Go, C#  
+**Frameworks** : Shiny, ggplot, Flask, Tensorflow, Keras  
+**Competencies** : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics, Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence  
 
 # Education  
 **2014-2015 : M.S. Biomedical Science - Colorado State University** 
@@ -48,48 +45,46 @@ Forecasting, Natural Language Processing, Statistics, Experimental Design, Machi
 # Career Summary
 **2017 - Present : Medical Research Scientist III**  
 **MedAware Systems Inc.**  
-Performed a variety of data-centric roles overseeing the acquisition, maintenance, and integrity of data in the world's largest Alzheimer's database. 
 
 
 *Key Responsibilities* 
 
- * Ensured the integrity and completeness of data acquisition
- * Developed data validation tools and algorithms
- * Programmed algorithms for the extraction and aliasing of data from text
- * Created and pursued novel research topics for publication
- * Produced high quality data visualizations
- * Assisted in the design and implementation of UI/UX improvements
+  *	Managed the integrity and completeness of data acquisition from thousands of clinical trials
+  *	Coded data validation tools and algorithms to comprehensively assess millions of data points
+  *	Managed targeted efforts to address data quality issues under strict deadlines
+  *	Integrated third party data sources into current marketing practices to drive targeted campaigns
+  *	Developed novel algorithms to automatically extract information from unstructured, non-standardized, text formats 
+  *	Pursued novel research topics for publication to be presented at medical conferences
+  *	Produced data visualizations for both clients and internal use
+  *	Identified the need for, and assisted in the design of, UI/UX improvements
+  * Performed quality assurance of C#/.NET Framework web applications
 
 
 **2016 - 2017 : Medical Research Scientist I**  
 **MedAware Systems Inc.**  
-Flourished in a fast paced start-up environment while involved in clinical trial data acquisition.
 
 *Key Responsibilities* 
 
-* Facilitated meta-analysis via data acquisition
-* Improved data intake through the standardization of novel data concepts
-* Performed quality assurance on new web features
+  * Facilitated large scale meta-analysis via data acquisition
+  * Participated in meta-analyses containing up to 1100 clinical trials
+  * Improved existing data platforms using domain knowledge to enhance the value of analyzable data
+  * Performed quality assurance of C#/.NET Framework web applications
 
 
 **2014 : Microbiology Teaching Assistant**  
 **Colorado State University**  
-Organized lectures and study groups for an upper level, general Microbiology course. Lectured to groups of up to 100 students and provided interactive, small group tutoring for difficult concepts. 
 
 *Key Repsonsibilities*  
 
-* Organized and lectured for large groups 
-* Small group tutoring to help struggling students succeed 
-* Crafted interdisciplinary exam questions to test students' ability to integrate concepts 
+  * Organized and lectured for groups exceeding 100 students
+  * Assisted in writing interdisciplinary exam questions
+  
 
 
 **2012 : Undergraduate Research Assistant **  
 **Colorado State University**  
-Investigated histone biochemistry and the effects of protein truncation on binding kinetics.
 
 *Key Responsibilities*  
 
-* ELISA
-* Protein Purification
-* Fluorescence Resonance Energy Transfer (FRET) Assays
+  * Investigated Histone binding kinetics utilizing Fluorescence Resonance Energy Transfer (FRET) Assays of purified proteins
 
