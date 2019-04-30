@@ -2,22 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Travis Spear</title>
-    <link>https://travisspear.github.io/</link>
+    <link>/</link>
     <description>Recent content on Travis Spear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 30 Apr 2019 14:43:15 -0600</lastBuildDate>
     
-	<atom:link href="https://travisspear.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>AAN2019</title>
+      <link>/aan2019/</link>
+      <pubDate>Tue, 30 Apr 2019 14:43:15 -0600</pubDate>
+      
+      <guid>/aan2019/</guid>
+      <description>TestsFigure 1: A caption</description>
+    </item>
+    
+    <item>
       <title>Hello R Markdown</title>
-      <link>https://travisspear.github.io/post/2015-07-23-r-rmarkdown/</link>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>https://travisspear.github.io/post/2015-07-23-r-rmarkdown/</guid>
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
       <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
@@ -25,10 +34,10 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     
     <item>
       <title></title>
-      <link>https://travisspear.github.io/travisspear_cv/</link>
+      <link>/travisspear_cv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://travisspear.github.io/travisspear_cv/</guid>
+      <guid>/travisspear_cv/</guid>
       <description>SummaryAs a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
 Career InterestsNatural Language ProcessingData Stream/IOT AnalyticsMedical/Healthcare ApplicationsBusiness AnalyticsCore SkillsPrimary Languages : R, Python, SQL</description>
     </item>

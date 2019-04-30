@@ -1,0 +1,19 @@
+---
+title: "AAN2019"
+date: 2019-04-30T14:43:15-06:00
+draft: true
+comments: false
+iamges: ~
+---
+
+# Tests
+
+
+```{r pressure, echo=FALSE, fig.cap="A caption", out.width = '100%'}
+
+
+#knitr::include_graphics("/img/AAN2019_Poster_6000.png")
+knitr::include_graphics("/img/AAN2019_PosterSVG.svg")
+
+
+```
