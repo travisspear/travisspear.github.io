@@ -1,0 +1,235 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for CV/Resume
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+%
+% Adapted to be an Rmarkdown template by Mitchell O'Hara-Wild
+% 23 November 2018
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
+
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+
+\colorlet{awesome}{awesome-red}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\def\endfirstpage{\newpage}
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+
+\name{Travis Spear}{}
+
+
+\mobile{303 263 4842}
+\email{\href{mailto:travisspear@gmail.com}{\nolinkurl{travisspear@gmail.com}}}
+\linkedin{travis-spear}
+
+% \gitlab{gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+% \skype{skype-id}
+% \reddit{reddit-id}
+
+
+\usepackage{booktabs}
+
+% Templates for detailed entries
+% Arguments: what when with where why
+\usepackage{etoolbox}
+\def\detaileditem#1#2#3#4#5{
+\cventry{#1}{#3}{#4}{#2}{\ifx#5\empty\else{\begin{cvitems}#5\end{cvitems}}\fi}}
+\def\detailedsection#1{\begin{cventries}#1\end{cventries}}
+
+% Templates for brief entries
+% Arguments: what when with
+\def\briefitem#1#2#3{\cvhonor{}{#1}{#3}{#2}}
+\def\briefsection#1{\begin{cvhonors}#1\end{cvhonors}}
+
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%------------------------------------------------------------------------------
+
+
+
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {April 2019}
+  {Travis Spear~~~·~~~Curriculum Vitae}
+  {\thepage}
+
+
+%-------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%------------------------------------------------------------------------------
+
+
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+As a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
+
+\hypertarget{career-interests}{%
+\section{Career Interests}\label{career-interests}}
+
+\begin{itemize}
+\tightlist
+\item
+  Natural Language Processing
+\item
+  Data Stream/IOT Analytics
+\item
+  Medical/Healthcare Applications
+\item
+  Business Analytics
+\end{itemize}
+
+\hypertarget{core-skills}{%
+\section{Core Skills}\label{core-skills}}
+
+\textbf{Primary Languages} : R, Python, SQL\\
+\textbf{Other Languages} : JavaScript, C\#\\
+\textbf{Frameworks} : Shiny, ggplot, Flask, Tensorflow, Keras\\
+\textbf{Competencies} : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics, Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence
+
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\textbf{2014-2015 : M.S. Biomedical Science - Colorado State University}
+
+\begin{itemize}
+\tightlist
+\item
+  Advanced coursework in human physiology with a concentration in Neuroscience
+\end{itemize}
+
+\textbf{2010-2014 : B.S Biomedical Science - Colorado State University}
+
+\begin{itemize}
+\tightlist
+\item
+  Foundational knowledge across the medical sciences
+\item
+  Quantitative coursework in Biostatistics and Calculus
+\end{itemize}
+
+\hypertarget{career-summary}{%
+\section{Career Summary}\label{career-summary}}
+
+\textbf{2017 - Present : Medical Research Scientist III}\\
+\textbf{MedAware Systems Inc.}
+
+\emph{Key Responsibilities}
+
+\begin{itemize}
+\tightlist
+\item
+  Managed the integrity and completeness of data acquisition from thousands of clinical trials
+\item
+  Coded data validation tools and algorithms to comprehensively assess millions of data points
+\item
+  Managed targeted efforts to address data quality issues under strict deadlines
+\item
+  Integrated third party data sources into current marketing practices to drive targeted campaigns
+\item
+  Developed novel algorithms to automatically extract information from unstructured, non-standardized, text formats
+\item
+  Pursued novel research topics for publication to be presented at medical conferences
+\item
+  Produced data visualizations for both clients and internal use
+\item
+  Identified the need for, and assisted in the design of, UI/UX improvements
+\item
+  Performed quality assurance of C\#/.NET Framework web applications
+\end{itemize}
+
+\textbf{2016 - 2017 : Medical Research Scientist I}\\
+\textbf{MedAware Systems Inc.}
+
+\emph{Key Responsibilities}
+
+\begin{itemize}
+\tightlist
+\item
+  Facilitated large scale meta-analysis via data acquisition
+\item
+  Participated in meta-analyses containing up to 1100 clinical trials
+\item
+  Improved existing data platforms using domain knowledge to enhance the value of analyzable data
+\item
+  Performed quality assurance of C\#/.NET Framework web applications
+\end{itemize}
+
+\textbf{2014 : Microbiology Teaching Assistant}\\
+\textbf{Colorado State University}
+
+\emph{Key Repsonsibilities}
+
+\begin{itemize}
+\tightlist
+\item
+  Organized and lectured for groups exceeding 100 students
+\item
+  Assisted in writing interdisciplinary exam questions
+\end{itemize}
+
+\textbf{2012 : Undergraduate Research Assistant }\\
+\textbf{Colorado State University}
+
+\emph{Key Responsibilities}
+
+\begin{itemize}
+\tightlist
+\item
+  Investigated Histone binding kinetics utilizing Fluorescence Resonance Energy Transfer (FRET) Assays of purified proteins
+\end{itemize}
+
+\end{document}

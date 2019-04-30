@@ -28,7 +28,7 @@ As a data scientist and analyst, I focus on enhancing company procedures using c
 
 # Core Skills  
 **Primary Languages** : R, Python, SQL  
-**Other Languages** : JavaScript, Go, C#  
+**Other Languages** : JavaScript, C#  
 **Frameworks** : Shiny, ggplot, Flask, Tensorflow, Keras  
 **Competencies** : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics, Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence  
 
