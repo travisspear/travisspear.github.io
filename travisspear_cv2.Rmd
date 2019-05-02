@@ -1,0 +1,18 @@
+---
+name: Travis Spear
+position: ""
+address: ""
+phone: 303 263 4842
+email: "travisspear@gmail.com"
+linkedin: travis-spear
+date: "`r format(Sys.time(), '%B %Y')`"
+footer: "test footer"
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+```
+
+# testing a second cv page

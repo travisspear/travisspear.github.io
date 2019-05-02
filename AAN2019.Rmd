@@ -1,7 +1,6 @@
 ---
 title: "AAN2019"
 date: 2019-04-30T14:43:15-06:00
-draft: true
 comments: false
 iamges: ~
 ---
