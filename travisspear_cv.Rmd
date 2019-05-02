@@ -16,7 +16,7 @@ library(vitae)
 ```
 
 # Summary
-As a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
+As a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data-driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
 
 
 # Career Interests
@@ -29,7 +29,7 @@ As a data scientist and analyst, I focus on enhancing company procedures using c
 # Core Skills  
 **Primary Languages** : R, Python, SQL  
 **Other Languages** : JavaScript, C#  
-**Frameworks** : Shiny, ggplot, Flask, Tensorflow, Keras  
+**Frameworks** : Shiny, ggplot, Tensorflow, Keras, Flask, .NET  
 **Competencies** : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics, Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence  
 
 # Education  

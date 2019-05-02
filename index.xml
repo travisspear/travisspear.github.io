@@ -6,7 +6,6 @@
     <description>Recent content on Travis Spear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Tue, 30 Apr 2019 14:43:15 -0600</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +17,8 @@
       <pubDate>Tue, 30 Apr 2019 14:43:15 -0600</pubDate>
       
       <guid>/aan2019/</guid>
-      <description>TestsFigure 1: A caption</description>
+      <description>Thanks for taking an interest in my research!
+If you have any further questions you can reach me at travisspear@gmail.com</description>
     </item>
     
     <item>
@@ -38,7 +38,7 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/travisspear_cv/</guid>
-      <description>SummaryAs a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
+      <description>SummaryAs a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data-driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
 Career InterestsNatural Language ProcessingData Stream/IOT AnalyticsMedical/Healthcare ApplicationsBusiness AnalyticsCore SkillsPrimary Languages : R, Python, SQL</description>
     </item>
     
