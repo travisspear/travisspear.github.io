@@ -1,7 +1,7 @@
 ---
 title: "Do Pharmaceutical Companies Publish Biased Research?"
 author: "Travis Spear"
-date: '2019-5-5'
+date: '2019-05-05'
 comments: no
 images: null
 slug: aan2019

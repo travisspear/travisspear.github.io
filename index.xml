@@ -6,41 +6,9 @@
     <description>Recent content on Travis Spear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Apr 2019 14:43:15 -0600</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>AAN2019</title>
-      <link>/aan2019/</link>
-      <pubDate>Tue, 30 Apr 2019 14:43:15 -0600</pubDate>
-      
-      <guid>/aan2019/</guid>
-      <description>Thanks for taking an interest in my research!
-If you have any further questions you can reach me at travisspear@gmail.com</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/travisspear_cv/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/travisspear_cv/</guid>
-      <description>SummaryAs a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data-driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
-Career InterestsNatural Language ProcessingData Stream/IOT AnalyticsMedical/Healthcare ApplicationsBusiness AnalyticsCore SkillsPrimary Languages : R, Python, SQL</description>
-    </item>
     
   </channel>
 </rss>

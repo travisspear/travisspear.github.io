@@ -1,0 +1,328 @@
+---
+title: "Parallel Plots for Visualizing Inconsistent Temporality of Clinical Trials"
+author: "Travis Spear"
+date: '2018-12-15'
+comments: no
+images: null
+slug: parallel-plots-for-visualizing-inconsistent-temporality-of-clinical-trials
+tags: []
+categories: []
+---
+
+In the pursuit of more data-centric medical decisions, large scale literature reviews are increasingly necessary. However, these literature reviews are far from entertaining and often hard to depict outside of a numeric tables. In this post, I'll be visualizing hundreds of clinical trials in a single graph to show how it may be possible to use parallel plots as a copmlementary reporting tool for literature reviews. 
+
+> This idea was insipred by an [excellent set of plots from 538](https://fivethirtyeight.com/features/americas-electoral-map-is-changing/).
+
+
+# The Final Product
+The following set of parallel plots are packed with information:  
+
+* Each faint line represents an individual group within a clinical trial   
+* Trial lines are colored based on patients' **baseline cognitive score** as defined by the Mini-Mental State Exam (MMSE) cutoffs
+* The darker lines show the **mean** for each baseline disease severity group  
+* Graphs are split by Active and Control treatments
+* The graph follows each trial across arbitrary times
+
+
+```{r noisyImag, warning=FALSE, message=FALSE, echo=FALSE}
+knitr::include_graphics("/img/noisyParallels.svg")
+library(tidyverse)
+```
+
+### What Does This Graph Tell Us?
+Prior to running any real tests, this graph shows that both Treatments and Controls trend towards the yellow (Mild impairment) area. It also appears that the patients with baseline mild impairment were more likely to remain close to their baseline cognitive status as seen by the low amount of yellow groups entering the blue/red zones by the end of trials. 
+
+### Questions to consider for further work
+
+* Is there a statistically significant difference comparing Treatment and Control groups?  
+* Are certain baseline severity groups more "cognitively fluid" than other groups? 
+
+
+
+
+# How To Reproduce This Graph 
+## First Step: Get Data
+The data in the original graph is not mine to share, so if you'd like to reproduce this the following code will allow you to produce crudely simulated data in the necessary shape.
+
+```{r dataSim, message=FALSE, warning=FALSE}
+# Libraries
+library(tidyverse) # Contains dplyr for general data manipulation and ggplot for plotting (needed later)
+
+simulateData <- function( 
+  nTrials, # How many trials to simulate
+  avgGroupsPerTrial # How many groups should trials have, on average?
+){
+  
+  x <- lapply(1:nTrials, function(x){ # Iterating over 1:nTrials...
+    
+    # Generate a number of groups based on a normal distribution with mean = avgGroupsPerTrial
+    g <- round(abs(rnorm(n = 1, mean = avgGroupsPerTrial-1, sd = 1)), 0)+1
+    
+    # Create a dataframe with a TrialId, GroupId, and each group having 3 categorical time points
+    data.frame(
+      TrialId = x,
+      lapply(1:g, function(x){  
+        data.frame(
+          GroupId = x,
+          list(Time = c("Baseline", "Mid", "End of Trial"))
+        )
+      }) %>% 
+        bind_rows()
+    )
+  }) %>%
+    bind_rows()
+  
+  # Assign groups to be Treatment or Control, but always have at least 1 Treatment Group
+  xclass <- x %>%
+    group_by(TrialId) %>%
+    mutate(
+      GroupType = ifelse(length(unique(GroupId)) == 1 & GroupId == 1, "Treatment", 
+                         ifelse(length(unique(GroupId)) > 1 & GroupId != length(unique(GroupId)), "Treatment", 
+                                "Control"))
+    ) %>%
+    # Add a name of an Outcome Measure (This is the most commonly used outcome for Alzheimer's)
+    mutate(Outcome = "Mini-Mental State Exam (MMSE)")
+  
+  # Create a final dataframe with simulated mean group values at each time point
+  # Assumes that treatment groups generally have higher outcomes post-baseline and control groups (control groups are allowed to decline where the treatment groups are not)
+  SimulatedData <- xclass %>%
+    group_by(TrialId, GroupId) %>%
+    mutate(OutcomeScore = ifelse(Time == "Baseline",  round(rnorm(1, mean = 20, sd = 3), 1), 1)) %>%
+    mutate(OutcomeScore = ifelse(Time == "End of Trial" & GroupType == "Treatment", (OutcomeScore[Time == "Baseline"]*(abs(rnorm(1, mean = 0, sd = .05))+1)), OutcomeScore)) %>%
+    mutate(OutcomeScore = ifelse(Time == "Mid" & GroupType == "Treatment", ((OutcomeScore[Time == "End of Trial"] + OutcomeScore[Time == "Baseline"])/2)*rnorm(1, mean = 1, sd = .1), OutcomeScore)) %>%
+    mutate(OutcomeScore = ifelse(Time == "End of Trial" & GroupType == "Control", (OutcomeScore[Time == "Baseline"]*(rnorm(1, mean = 0, sd = .05)+1)), OutcomeScore)) %>%
+    mutate(OutcomeScore = ifelse(Time == "Mid" & GroupType == "Control", ((OutcomeScore[Time == "End of Trial"] + OutcomeScore[Time == "Baseline"])/2)*rnorm(1, mean = 1, sd = .1), OutcomeScore)) %>%
+    mutate(OutcomeScore = round(OutcomeScore, 1)) %>%
+    # Add a Disease Severity measure based on their baseline MMSE score. Cutoffs here are from a scoring guide and not arbitrary.
+    mutate(DiseaseSeverity = ifelse(OutcomeScore[Time == "Baseline"] <= 17, "Severe Impairment", 
+                                    ifelse(OutcomeScore[Time == "Baseline"] > 17 & OutcomeScore[Time == "Baseline"] < 24, "Mild Impairment",
+                                           ifelse(OutcomeScore[Time == "Baseline"] >= 24, "No Impairment", 
+                                                  NA)))) %>%
+    # Remove any impossible scores outside of the range 0-30 in case the randomness assigned any.
+    mutate(OutcomeScore = ifelse(OutcomeScore > 30, 30, 
+                                 ifelse(OutcomeScore < 0, 0, OutcomeScore))) %>%
+    ungroup() %>%
+    left_join(
+      xclass %>%
+        select(TrialId, GroupId, Outcome) %>%
+        distinct() %>%
+        rowid_to_column(var = "GraphId")
+    )
+  
+  # Return simulated data
+  return(SimulatedData)
+  
+}
+
+SimulatedData <- simulateData(
+  nTrials = 300,
+  avgGroupsPerTrial = 3
+) 
+```
+
+> If you'd like to plot any of your own data, this graphing method uses a 'long' data format as seen in the following table:
+
+```{r dataExample, warning=FALSE, message=FALSE, echo=FALSE}
+
+SimulatedData %>%
+  select(TrialId, GroupId, Time, OutcomeScore) %>%
+  head()
+
+```
+
+## Plotting the Simulated Data
+The following code will create 13 different plot elements consisting of lines, points, and areas to depict a story of clinical trial outcomes. The comments within the code will describe the process in more detail.
+While this is far from succinct, I believe the results are worth it.
+
+```{r dataPlot, message=FALSE, warning=FALSE}
+
+p <- ggplot() +
+  # Background lines for each individual trial
+  geom_line(
+    data = SimulatedData,
+    aes(
+      x = Time,
+      y = OutcomeScore,
+      group = GraphId,
+      color = DiseaseSeverity
+    ),
+    alpha = .2
+  ) +
+  # Background points for each individual trial
+  geom_point(
+    data = SimulatedData,
+    aes(
+      x = Time,
+      y = OutcomeScore,
+      group = GraphId,
+      fill = DiseaseSeverity,
+      color = DiseaseSeverity
+    ),
+    pch = 21,
+    size = 5,
+    alpha = .4
+  ) +
+  # Create severity specific plots of the mean outcomes for each severity category
+  geom_line(
+    data = SimulatedData %>%
+      ungroup() %>%
+      filter(DiseaseSeverity == "Severe Impairment") %>%
+      select(Time, OutcomeScore) %>%
+      group_by(Time) %>%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean,
+      group = 1
+    ),
+    size = 1
+  ) +
+  geom_point(
+    data = SimulatedData %>%
+      ungroup() %>%
+      filter(DiseaseSeverity == "Severe Impairment") %>%
+      select(Time, OutcomeScore) %>%
+      group_by(Time) %>%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean
+    ),
+    size = 6,
+    pch = 21,
+    color = "black",
+    fill = "#d2233c" # Brighter Red
+  ) +
+  geom_line(
+    data = SimulatedData %>%
+      ungroup() %>%
+      filter(DiseaseSeverity == "Mild Impairment") %>%
+      select(Time, OutcomeScore) %>%
+      group_by(Time) %>%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean,
+      group = 1
+    ),
+    size = 1
+  ) +
+  geom_point(
+    data = SimulatedData %>%
+      ungroup() %>%
+      filter(DiseaseSeverity == "Mild Impairment") %>%
+      select(Time, OutcomeScore) %>%
+      group_by(Time) %>%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean
+    ),
+    size = 6,
+    pch = 21,
+    color = "black",
+    fill = "#ffe944" # Brigher Yellow
+  ) +
+  geom_line(
+    data = SimulatedData %>%
+      ungroup() %>%
+      filter(DiseaseSeverity == "No Impairment") %>%
+      select(Time, OutcomeScore) %>%
+      group_by(Time) %>%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean,
+      group = 1
+    ),
+    size = 1
+  ) +
+  geom_point(
+    data = SimulatedData %>%
+      ungroup() %>%
+      filter(DiseaseSeverity == "No Impairment") %>%
+      select(Time, OutcomeScore) %>%
+      group_by(Time) %>%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean
+    ),
+    size = 6,
+    pch = 21,
+    color = "black",
+    fill = "#0a64b7" # Brighter Blue
+  ) +
+  # Plot the MMSE cutoffs 
+  geom_hline(
+    yintercept = 17
+  ) +
+  geom_hline(
+    yintercept = 24
+  ) +
+  # Plot a colored rect over each severity category 
+  geom_rect(
+    fill = "#d33b50",
+    alpha = .15,
+    aes(
+      xmin = "Baseline",
+      xmax = "End of Trial"
+    ),
+    ymin = 0,
+    ymax = 17
+  ) +
+  geom_rect(
+    fill = "#fded73",
+    alpha = .15,
+    aes(
+      xmin = "Baseline",
+      xmax = "End of Trial"
+    ),
+    ymin = 17,
+    ymax = 24
+  ) +
+  geom_rect(
+    fill = "#2f5597",
+    alpha = .15,
+    aes(
+      xmin = "Baseline",
+      xmax = "End of Trial"
+    ),
+    ymin = 24,
+    ymax = 30
+  ) +
+  # Tweak colors
+  scale_x_discrete(limits = c("Baseline", "Mid", "End of Trial")) +
+  scale_y_continuous(breaks=c(0, 17, 24, 30)) +
+  scale_fill_manual(values = c("#fded73", # Yellow
+                               "#2E75B6", # Blue
+                               "#d33b50" # Red
+  )) +
+  scale_color_manual(values = c("#fded73",
+                                "#2E75B6",
+                                "#d33b50")) +
+  # Tweak theme and other plot parameters
+  theme_minimal() +
+  ggtitle("Alzheimer Disease Progression",
+          subtitle = "Changes in MMSE Throughout Clinical Trials in All Groups") +
+  ylab("MMSE Score") +
+  xlab("Relative Trial Time") +
+  labs(fill = "Baseline Disease Severity") +
+  guides(color=F) +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(), 
+    legend.position="bottom",
+    plot.title = element_text(hjust = .5),
+    plot.subtitle = element_text(hjust = .5)
+  ) 
+
+```
+
+## The Final (Simulated) Product
+This graph is not split by Treatment vs Control but to replicate that all you need is to arrange two graphs with filtred data side by side. The libraries ggpubr and grid worked well for this and allow a great deal of customization.
+
+```{r plot, message=FALSE, warning=FALSE, echo=FALSE}
+p
+```
+

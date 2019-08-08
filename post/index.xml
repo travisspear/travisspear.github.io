@@ -6,20 +6,29 @@
     <description>Recent content in Posts on Travis Spear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 05 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      <title>Do Pharmaceutical Companies Publish Biased Research?</title>
+      <link>/post/aan2019/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>/post/aan2019/</guid>
+      <description>In 2019 I had the opportunity to share some of my research at the American Academy of Neurologists in Philadelphia. Here I’ll provide my poster as well as a few reasons for my excitement about the topic of literature bias in Alzheimer’s Disease.
+What This Research Contributes:The largest review of Alzheimer’s literature focusing on biasExpands on previous Funding bias research in Alzheimer’s DiseaseProvides non-anecdotal exploration into Publishing Journal as a source of biasIntroduces Author Affiliations as a potential biasing factorBackgroundThe concept of literature bias is not new.</description>
+    </item>
+    
+    <item>
+      <title>Parallel Plots for Visualizing Inconsistent Temporality of Clinical Trials</title>
+      <link>/post/parallel-plots-for-visualizing-inconsistent-temporality-of-clinical-trials/</link>
+      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/parallel-plots-for-visualizing-inconsistent-temporality-of-clinical-trials/</guid>
+      <description>In the pursuit of more data-centric medical decisions, large scale literature reviews are increasingly necessary. However, these literature reviews are far from entertaining and often hard to depict outside of a numeric tables. In this post, I’ll be visualizing hundreds of clinical trials in a single graph to show how it may be possible to use parallel plots as a copmlementary reporting tool for literature reviews.
+This idea was insipred by an excellent set of plots from 538.</description>
     </item>
     
   </channel>
