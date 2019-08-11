@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#3F88C5">
+	<meta name="msapplication-TileColor" content="#3F88C5">
+
+<meta itemprop="name" content="Parallel Plots for Exploratory Analysis of Clinical Trial Literature Reviews">
+<meta itemprop="description" content="In the pursuit of more data-centric medical decisions large scale literature reviews are increasingly necessary, however, results of these literature reviews are often hard to depict outside of numeric tables. I’ll be exploring the use of parallel plots as a complementary reporting tool for literature reviews through their ability to display hundreds of clinical trials on a single graph.
+This idea was inspired by an excellent set of plots from 538.">
+
+
+<meta itemprop="datePublished" content="2018-12-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-15T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1492">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta property="og:title" content="Parallel Plots for Exploratory Analysis of Clinical Trial Literature Reviews" />
+<meta property="og:description" content="In the pursuit of more data-centric medical decisions large scale literature reviews are increasingly necessary, however, results of these literature reviews are often hard to depict outside of numeric tables. I’ll be exploring the use of parallel plots as a complementary reporting tool for literature reviews through their ability to display hundreds of clinical trials on a single graph.
+This idea was inspired by an excellent set of plots from 538." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://travisspear.github.io/post/parallel-plots/" /><meta property="article:published_time" content="2018-12-15T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-12-15T00:00:00&#43;00:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Parallel Plots for Exploratory Analysis of Clinical Trial Literature Reviews"/>
+<meta name="twitter:description" content="In the pursuit of more data-centric medical decisions large scale literature reviews are increasingly necessary, however, results of these literature reviews are often hard to depict outside of numeric tables. I’ll be exploring the use of parallel plots as a complementary reporting tool for literature reviews through their ability to display hundreds of clinical trials on a single graph.
+This idea was inspired by an excellent set of plots from 538."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Parallel Plots for Exploratory Analysis of Clinical Trial Literature Reviews</title>
+	<link rel="stylesheet" href="https://travisspear.github.io/css/style.min.dd1a622b355fc7425afc3e30f77d4a71b5cf5af999192113865e5da17ea92b55.css" integrity="sha256-3RpiKzVfx0Ja/D4w931KcbXPWvmZGSEThl5doX6pK1U=">
+	
+	<link rel="stylesheet" href="https://travisspear.github.io/css/style.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://travisspear.github.io">Travis Spear</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					<a href="https://travisspear.github.io/travisspear_cv/">Resume</a>
+					<a href="https://travisspear.github.io/post/">Projects</a>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://www.linkedin.com/in/travis-spear/" target="_blank" rel="noopener" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:travisspear@gmail.com" target="_blank" rel="noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://travisspear.github.io/travisspear_cv/">Resume</a></li>
+			<li><a href="https://travisspear.github.io/post/">Projects</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Parallel Plots for Exploratory Analysis of Clinical Trial Literature Reviews</h1>
+		<div class="content">
+			<p>In the pursuit of more data-centric medical decisions large scale literature reviews are increasingly necessary, however, results of these literature reviews are often hard to depict outside of numeric tables. I’ll be exploring the use of parallel plots as a complementary reporting tool for literature reviews through their ability to display hundreds of clinical trials on a single graph.</p>
+<blockquote>
+<p>This idea was inspired by an <a href="https://fivethirtyeight.com/features/americas-electoral-map-is-changing/">excellent set of plots from 538</a>.</p>
+</blockquote>
+<div id="the-final-product" class="section level1">
+<h1>The Final Product</h1>
+<p>Working at MedAware Systems, I had access to a massive dataset of Alzheimer’s research with variables already extracted. The following plot contains ~750 clinical trials sharing one common feature: the usage of a cognitive test called the “Mini-Mental State Exam (MMSE)” which is the most commonly reported measurement in this disease area.
+In the plots below, there are many different elements and colors used to convey a variety of information about the state of each individual trial. To help orient yourself, the following list of items are the key features to know:</p>
+<ul>
+<li>Each faint line represents an individual <strong>group</strong> within a clinical trial<br />
+</li>
+<li>Trial lines are colored based on patients’ <strong>baseline cognitive score</strong> as defined by the Mini-Mental State Exam (MMSE) cutoffs. (Higher Score is better)</li>
+<li>The darker lines show the <strong>mean</strong> for each baseline disease severity group<br />
+</li>
+<li>Graphs are split by Active and Control treatments</li>
+<li>The graph follows each trial across arbitrary times</li>
+</ul>
+<p><img src="/img/noisyParallels.svg" /><!-- --></p>
+<div id="what-does-this-graph-tell-us" class="section level3">
+<h3>What Does This Graph Tell Us?</h3>
+<p>Prior to running statistical tests, this graph demonstrates:</p>
+<ul>
+<li>Most patients entering the trial with mild impairment according to the MMSE remained within the mild impairment boundaries</li>
+<li>Both the Severe Impairment and No Impairment patients trended towards Mild Impairment by the end of their trials</li>
+<li>Active treatments, seen on the left graph, appear to prevent the decline of Mildly Impaired patients when compared to control treatments</li>
+</ul>
+<p>These three observations would need to be confirmed but this type of graph makes it easy to formulate hypotheses.</p>
+</div>
+</div>
+<div id="how-to-reproduce-this-graph" class="section level1">
+<h1>How To Reproduce This Graph</h1>
+<div id="first-step-get-data" class="section level2">
+<h2>First Step: Get Data</h2>
+<p>The data in the original graph is not mine to share, so if you’d like to reproduce this the following code will allow you to produce crudely simulated data in the necessary shape.</p>
+<pre class="r"><code># Libraries
+library(tidyverse) # Contains dplyr for general data manipulation and ggplot for plotting (needed later)
+
+simulateData &lt;- function( 
+  nTrials, # How many trials to simulate
+  avgGroupsPerTrial # How many groups should trials have, on average?
+){
+  
+  x &lt;- lapply(1:nTrials, function(x){ # Iterating over 1:nTrials...
+    
+    # Generate a number of groups based on a normal distribution with mean = avgGroupsPerTrial
+    g &lt;- round(abs(rnorm(n = 1, mean = avgGroupsPerTrial-1, sd = 1)), 0)+1
+    
+    # Create a dataframe with a TrialId, GroupId, and each group having 3 categorical time points
+    data.frame(
+      TrialId = x,
+      lapply(1:g, function(x){  
+        data.frame(
+          GroupId = x,
+          list(Time = c(&quot;Baseline&quot;, &quot;Mid&quot;, &quot;End of Trial&quot;))
+        )
+      }) %&gt;% 
+        bind_rows()
+    )
+  }) %&gt;%
+    bind_rows()
+  
+  # Assign groups to be Treatment or Control, but always have at least 1 Treatment Group
+  xclass &lt;- x %&gt;%
+    group_by(TrialId) %&gt;%
+    mutate(
+      GroupType = ifelse(length(unique(GroupId)) == 1 &amp; GroupId == 1, &quot;Treatment&quot;, 
+                         ifelse(length(unique(GroupId)) &gt; 1 &amp; GroupId != length(unique(GroupId)), &quot;Treatment&quot;, 
+                                &quot;Control&quot;))
+    ) %&gt;%
+    # Add a name of an Outcome Measure (This is the most commonly used outcome for Alzheimer&#39;s)
+    mutate(Outcome = &quot;Mini-Mental State Exam (MMSE)&quot;)
+  
+  # Create a final dataframe with simulated mean group values at each time point
+  # Assumes that treatment groups generally have higher outcomes post-baseline and control groups (control groups are allowed to decline where the treatment groups are not)
+  SimulatedData &lt;- xclass %&gt;%
+    group_by(TrialId, GroupId) %&gt;%
+    mutate(OutcomeScore = ifelse(Time == &quot;Baseline&quot;,  round(rnorm(1, mean = 20, sd = 3), 1), 1)) %&gt;%
+    mutate(OutcomeScore = ifelse(Time == &quot;End of Trial&quot; &amp; GroupType == &quot;Treatment&quot;, (OutcomeScore[Time == &quot;Baseline&quot;]*(abs(rnorm(1, mean = 0, sd = .05))+1)), OutcomeScore)) %&gt;%
+    mutate(OutcomeScore = ifelse(Time == &quot;Mid&quot; &amp; GroupType == &quot;Treatment&quot;, ((OutcomeScore[Time == &quot;End of Trial&quot;] + OutcomeScore[Time == &quot;Baseline&quot;])/2)*rnorm(1, mean = 1, sd = .1), OutcomeScore)) %&gt;%
+    mutate(OutcomeScore = ifelse(Time == &quot;End of Trial&quot; &amp; GroupType == &quot;Control&quot;, (OutcomeScore[Time == &quot;Baseline&quot;]*(rnorm(1, mean = 0, sd = .05)+1)), OutcomeScore)) %&gt;%
+    mutate(OutcomeScore = ifelse(Time == &quot;Mid&quot; &amp; GroupType == &quot;Control&quot;, ((OutcomeScore[Time == &quot;End of Trial&quot;] + OutcomeScore[Time == &quot;Baseline&quot;])/2)*rnorm(1, mean = 1, sd = .1), OutcomeScore)) %&gt;%
+    mutate(OutcomeScore = round(OutcomeScore, 1)) %&gt;%
+    # Add a Disease Severity measure based on their baseline MMSE score. Cutoffs here are from a scoring guide and not arbitrary.
+    mutate(DiseaseSeverity = ifelse(OutcomeScore[Time == &quot;Baseline&quot;] &lt;= 17, &quot;Severe Impairment&quot;, 
+                                    ifelse(OutcomeScore[Time == &quot;Baseline&quot;] &gt; 17 &amp; OutcomeScore[Time == &quot;Baseline&quot;] &lt; 24, &quot;Mild Impairment&quot;,
+                                           ifelse(OutcomeScore[Time == &quot;Baseline&quot;] &gt;= 24, &quot;No Impairment&quot;, 
+                                                  NA)))) %&gt;%
+    # Remove any impossible scores outside of the range 0-30 in case the randomness assigned any.
+    mutate(OutcomeScore = ifelse(OutcomeScore &gt; 30, 30, 
+                                 ifelse(OutcomeScore &lt; 0, 0, OutcomeScore))) %&gt;%
+    ungroup() %&gt;%
+    left_join(
+      xclass %&gt;%
+        select(TrialId, GroupId, Outcome) %&gt;%
+        distinct() %&gt;%
+        rowid_to_column(var = &quot;GraphId&quot;)
+    )
+  
+  # Return simulated data
+  return(SimulatedData)
+  
+}
+
+SimulatedData &lt;- simulateData(
+  nTrials = 300,
+  avgGroupsPerTrial = 3
+) </code></pre>
+<blockquote>
+<p>If you’d like to plot any of your own data, this graphing method uses a ‘long’ data format as seen in the following table:</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th align="right">TrialId</th>
+<th align="right">GroupId</th>
+<th align="left">Time</th>
+<th align="right">OutcomeScore</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">Baseline</td>
+<td align="right">20.3</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">Mid</td>
+<td align="right">22.0</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="left">End of Trial</td>
+<td align="right">20.6</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="left">Baseline</td>
+<td align="right">15.5</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="left">Mid</td>
+<td align="right">14.5</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="left">End of Trial</td>
+<td align="right">16.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="plotting-the-simulated-data" class="section level2">
+<h2>Plotting the Simulated Data</h2>
+<p>The following code will create 13 different plot elements consisting of lines, points, and areas to depict a story of clinical trial outcomes. The comments within the code will describe the process in more detail.
+While this is far from succinct, I believe the results are worth it.</p>
+<pre class="r"><code>p &lt;- ggplot() +
+  # Background lines for each individual trial
+  geom_line(
+    data = SimulatedData,
+    aes(
+      x = Time,
+      y = OutcomeScore,
+      group = GraphId,
+      color = DiseaseSeverity
+    ),
+    alpha = .2
+  ) +
+  # Background points for each individual trial
+  geom_point(
+    data = SimulatedData,
+    aes(
+      x = Time,
+      y = OutcomeScore,
+      group = GraphId,
+      fill = DiseaseSeverity,
+      color = DiseaseSeverity
+    ),
+    pch = 21,
+    size = 5,
+    alpha = .4
+  ) +
+  # Create severity specific plots of the mean outcomes for each severity category
+  geom_line(
+    data = SimulatedData %&gt;%
+      ungroup() %&gt;%
+      filter(DiseaseSeverity == &quot;Severe Impairment&quot;) %&gt;%
+      select(Time, OutcomeScore) %&gt;%
+      group_by(Time) %&gt;%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean,
+      group = 1
+    ),
+    size = 1
+  ) +
+  geom_point(
+    data = SimulatedData %&gt;%
+      ungroup() %&gt;%
+      filter(DiseaseSeverity == &quot;Severe Impairment&quot;) %&gt;%
+      select(Time, OutcomeScore) %&gt;%
+      group_by(Time) %&gt;%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean
+    ),
+    size = 6,
+    pch = 21,
+    color = &quot;black&quot;,
+    fill = &quot;#d2233c&quot; # Brighter Red
+  ) +
+  geom_line(
+    data = SimulatedData %&gt;%
+      ungroup() %&gt;%
+      filter(DiseaseSeverity == &quot;Mild Impairment&quot;) %&gt;%
+      select(Time, OutcomeScore) %&gt;%
+      group_by(Time) %&gt;%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean,
+      group = 1
+    ),
+    size = 1
+  ) +
+  geom_point(
+    data = SimulatedData %&gt;%
+      ungroup() %&gt;%
+      filter(DiseaseSeverity == &quot;Mild Impairment&quot;) %&gt;%
+      select(Time, OutcomeScore) %&gt;%
+      group_by(Time) %&gt;%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean
+    ),
+    size = 6,
+    pch = 21,
+    color = &quot;black&quot;,
+    fill = &quot;#ffe944&quot; # Brigher Yellow
+  ) +
+  geom_line(
+    data = SimulatedData %&gt;%
+      ungroup() %&gt;%
+      filter(DiseaseSeverity == &quot;No Impairment&quot;) %&gt;%
+      select(Time, OutcomeScore) %&gt;%
+      group_by(Time) %&gt;%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean,
+      group = 1
+    ),
+    size = 1
+  ) +
+  geom_point(
+    data = SimulatedData %&gt;%
+      ungroup() %&gt;%
+      filter(DiseaseSeverity == &quot;No Impairment&quot;) %&gt;%
+      select(Time, OutcomeScore) %&gt;%
+      group_by(Time) %&gt;%
+      summarise(Mean = mean(OutcomeScore)),
+    aes(
+      x = Time,
+      y = Mean
+    ),
+    size = 6,
+    pch = 21,
+    color = &quot;black&quot;,
+    fill = &quot;#0a64b7&quot; # Brighter Blue
+  ) +
+  # Plot the MMSE cutoffs 
+  geom_hline(
+    yintercept = 17
+  ) +
+  geom_hline(
+    yintercept = 24
+  ) +
+  # Plot a colored rect over each severity category 
+  geom_rect(
+    fill = &quot;#d33b50&quot;,
+    alpha = .15,
+    aes(
+      xmin = &quot;Baseline&quot;,
+      xmax = &quot;End of Trial&quot;
+    ),
+    ymin = 0,
+    ymax = 17
+  ) +
+  geom_rect(
+    fill = &quot;#fded73&quot;,
+    alpha = .15,
+    aes(
+      xmin = &quot;Baseline&quot;,
+      xmax = &quot;End of Trial&quot;
+    ),
+    ymin = 17,
+    ymax = 24
+  ) +
+  geom_rect(
+    fill = &quot;#2f5597&quot;,
+    alpha = .15,
+    aes(
+      xmin = &quot;Baseline&quot;,
+      xmax = &quot;End of Trial&quot;
+    ),
+    ymin = 24,
+    ymax = 30
+  ) +
+  # Tweak colors
+  scale_x_discrete(limits = c(&quot;Baseline&quot;, &quot;Mid&quot;, &quot;End of Trial&quot;)) +
+  scale_y_continuous(breaks=c(0, 17, 24, 30)) +
+  scale_fill_manual(values = c(&quot;#fded73&quot;, # Yellow
+                               &quot;#2E75B6&quot;, # Blue
+                               &quot;#d33b50&quot; # Red
+  )) +
+  scale_color_manual(values = c(&quot;#fded73&quot;,
+                                &quot;#2E75B6&quot;,
+                                &quot;#d33b50&quot;)) +
+  # Tweak theme and other plot parameters
+  theme_minimal() +
+  ggtitle(&quot;Alzheimer Disease Progression&quot;,
+          subtitle = &quot;Changes in MMSE Throughout Clinical Trials in All Groups&quot;) +
+  ylab(&quot;MMSE Score&quot;) +
+  xlab(&quot;Relative Trial Time&quot;) +
+  labs(fill = &quot;Baseline Disease Severity&quot;) +
+  guides(color=F) +
+  theme(
+    panel.grid.major = element_blank(), 
+    panel.grid.minor = element_blank(), 
+    legend.position=&quot;bottom&quot;,
+    plot.title = element_text(hjust = .5),
+    plot.subtitle = element_text(hjust = .5)
+  ) </code></pre>
+</div>
+<div id="the-final-simulated-product" class="section level2">
+<h2>The Final (Simulated) Product</h2>
+<p>This graph is not split by Treatment vs Control but to replicate that all you need is to arrange two graphs with filtered data side by side. The libraries ggpubr and grid worked well for this and allow a great deal of customization.</p>
+<p><img src="/post/2019-08-07-parallel-plots-for-visualizing-inconsistent-temporality-of-clinical-trials_files/figure-html/plot-1.png" width="672" /></p>
+</div>
+</div>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2019 <a href="https://travisspear.github.io">Travis Spear</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a>
+			
+		</p>
+	</footer>
+
+
+	<script src="https://travisspear.github.io/js/main.min.8f39f24808e9d0a9b02da58c2d2838da859dc0b7bdfadbdb1883aae8b6adacfe.js" integrity="sha256-jznySAjp0KmwLaWMLSg42oWdwLe9+tvbGIOq6LatrP4="></script>
+
+</body>
+
+</html>

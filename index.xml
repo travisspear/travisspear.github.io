@@ -2,13 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Travis Spear</title>
-    <link>/</link>
+    <link>https://travisspear.github.io/</link>
     <description>Recent content on Travis Spear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 05 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://travisspear.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Literature Bias in Alzheimer&#39;s Disease Clinical Trials</title>
+      <link>https://travisspear.github.io/post/aan2019/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://travisspear.github.io/post/aan2019/</guid>
+      <description>In 2019 I had the opportunity to share some of my research at the American Academy of Neurologists in Philadelphia. Here I’ll provide my poster as well as a few reasons for my excitement about the topic of literature bias in Alzheimer’s Disease.
+What This Research Contributes:The largest review of Alzheimer’s literature focusing on biasExpands on previous Funding bias research in Alzheimer’s DiseaseProvides non-anecdotal exploration into Publishing Journal as a source of biasIntroduces Author Affiliations as a potential biasing factorBackgroundIn clinical research, the Randomized Controlled Trial (RCT) is considered the gold standard due to it’s ability to mitigate the amount of bias introduced by investigators and patients.</description>
+    </item>
+    
+    <item>
+      <title>Parallel Plots for Exploratory Analysis of Clinical Trial Literature Reviews</title>
+      <link>https://travisspear.github.io/post/parallel-plots/</link>
+      <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://travisspear.github.io/post/parallel-plots/</guid>
+      <description>In the pursuit of more data-centric medical decisions large scale literature reviews are increasingly necessary, however, results of these literature reviews are often hard to depict outside of numeric tables. I’ll be exploring the use of parallel plots as a complementary reporting tool for literature reviews through their ability to display hundreds of clinical trials on a single graph.
+This idea was inspired by an excellent set of plots from 538.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://travisspear.github.io/travisspear_cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://travisspear.github.io/travisspear_cv/</guid>
+      <description>SummaryAs a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data-driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
+Career InterestsNatural Language ProcessingData Stream/IOT AnalyticsMedical/Healthcare ApplicationsBusiness AnalyticsCore SkillsPrimary Languages : R, Python, SQL</description>
+    </item>
     
   </channel>
 </rss>

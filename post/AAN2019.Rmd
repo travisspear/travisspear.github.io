@@ -1,5 +1,5 @@
 ---
-title: "Do Pharmaceutical Companies Publish Biased Research?"
+title: "Literature Bias in Alzheimer's Disease Clinical Trials"
 author: "Travis Spear"
 date: '2019-05-05'
 comments: no
@@ -19,24 +19,31 @@ In 2019 I had the opportunity to share some of my research at the American Acade
 * Introduces Author Affiliations as a potential biasing factor
 
 ## Background
-The concept of literature bias is not new. However, most research on this topic studies internal factors such as biased groups, randomization, or unfair treatment comparisons. I wanted to investigate the impact that external factors could have on reported results. The final set of external factors were found in the metadata of studies and included **Funding Source**, **Author Affiliations**, and **Publishing Journal**. 
+In clinical research, the Randomized Controlled Trial (RCT) is considered the gold standard due to it's ability to mitigate the amount of bias introduced by investigators and patients. The types of biases that RCTs counter are, however, only internal factors within the trial. What if there are external factors creating an unfair environment for the study to take place in? A common example of an external factor is Pharmaceutically funded research: Pharmaceutical companies are heavily invested in the success of their drugs and, as such, one might assume that trials run or sponsored by pharmaceutical companies are pressured to portray their products favorably. 
+
+The three types of external factors I was able to investigate here are:
+
+* Funding Bias
+* Publishing Journal Bias
+* Author Affiliation Bias
 
 #### Funding Bias
-Of these three factors, Funding bias has been investigated the most with a few dozen studies over the past decade looking into it in a variety of disease areas. Results of these studies are mixed and still very sparse in Alzheimer's Disease. In the past, I have been cuationed against trusting pharmaceutically sponsored research due to the amount of money invested in the success of drugs - this makes sense, anecdotally, but I had never seen any evidence to prove it.
+Funding Bias is the idea that a study's sponsor can assert their influence on the final results of the clinical trial. The mechanisms in which this bias can be introduced has been described by previous authors and may include:
+* Sponsors preventing the publication of research given unfavorable results
+* Sponsors delaying the publication of research or forcing publication into lesser known journals to hide unfavorable results
+* Sponsors only conducting a published clinical trial after many internal reports to ensure desired results 
+
 
 #### Journal Bias
-Journals can introduce bias in two major ways: 
-
-1. Only publishing "flashy" articles that show how great treatments are. (Who wants to read another null or negative result?)
-2. Predatory journals publishing studies without a peer-review process or other quality control.
-
-Given that I wanted to have large sample sizes for each subgroup, I was unable to study predatory journals here and focused on reputable journals that commonly publish Alzheimer's research.
+Journal bias is similar to funding bias in the sense that the publishing journals are incentivized to publish research that will attract people to their journal. Null and negative results may be rejected from publication in top journals despite being accurate portrayals of treatment efficacy in a phenomenon called "Positive Publication Bias". Journals also vary in quality of published research, for example: not every journal is peer reviewed and some will publish studies with substandard blinding and randomization. 
 
 #### Author Affiliations
-I was unable to find any previous research studying the potential effects of author affiliation on reported outcomes. This was a surprise as I suspsect that affiiliations and study sponsors impart pressure on the authors to succeed in their trials. 
+I was unable to find any previous research studying the potential effects of author affiliation on reported outcomes. This was a surprise as I suspect that affiliations have the ability to influence the authors just as much as a funding source would. 
+
 
 
 ## AAN2019 Presentation
+This poster should help identify correlations between potential external biasing factors and the reported trial results. 
 
 ```{r poster, echo=FALSE, out.width = '100%'}
 

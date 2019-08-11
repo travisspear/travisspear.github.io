@@ -1,24 +1,25 @@
 ---
-title: "Parallel Plots for Visualizing Inconsistent Temporality of Clinical Trials"
+title: "Parallel Plots for Exploratory Analysis of Clinical Trial Literature Reviews"
 author: "Travis Spear"
 date: '2018-12-15'
 comments: no
 images: null
-slug: parallel-plots-for-visualizing-inconsistent-temporality-of-clinical-trials
+slug: parallel-plots
 tags: []
 categories: []
 ---
 
-In the pursuit of more data-centric medical decisions, large scale literature reviews are increasingly necessary. However, these literature reviews are far from entertaining and often hard to depict outside of a numeric tables. In this post, I'll be visualizing hundreds of clinical trials in a single graph to show how it may be possible to use parallel plots as a copmlementary reporting tool for literature reviews. 
+In the pursuit of more data-centric medical decisions large scale literature reviews are increasingly necessary, however, results of these literature reviews are often hard to depict outside of numeric tables. I'll be exploring the use of parallel plots as a complementary reporting tool for literature reviews through their ability to display hundreds of clinical trials on a single graph. 
 
-> This idea was insipred by an [excellent set of plots from 538](https://fivethirtyeight.com/features/americas-electoral-map-is-changing/).
+> This idea was inspired by an [excellent set of plots from 538](https://fivethirtyeight.com/features/americas-electoral-map-is-changing/).
 
 
 # The Final Product
-The following set of parallel plots are packed with information:  
+Working at MedAware Systems, I had access to a massive dataset of Alzheimer's research with variables already extracted. The following plot contains ~750 clinical trials sharing one common feature: the usage of a cognitive test called the "Mini-Mental State Exam (MMSE)" which is the most commonly reported measurement in this disease area. 
+In the plots below, there are many different elements and colors used to convey a variety of information about the state of each individual trial. To help orient yourself, the following list of items are the key features to know: 
 
-* Each faint line represents an individual group within a clinical trial   
-* Trial lines are colored based on patients' **baseline cognitive score** as defined by the Mini-Mental State Exam (MMSE) cutoffs
+* Each faint line represents an individual **group** within a clinical trial   
+* Trial lines are colored based on patients' **baseline cognitive score** as defined by the Mini-Mental State Exam (MMSE) cutoffs. (Higher Score is better)
 * The darker lines show the **mean** for each baseline disease severity group  
 * Graphs are split by Active and Control treatments
 * The graph follows each trial across arbitrary times
@@ -27,17 +28,17 @@ The following set of parallel plots are packed with information:
 ```{r noisyImag, warning=FALSE, message=FALSE, echo=FALSE}
 knitr::include_graphics("/img/noisyParallels.svg")
 library(tidyverse)
+library(knitr)
 ```
 
 ### What Does This Graph Tell Us?
-Prior to running any real tests, this graph shows that both Treatments and Controls trend towards the yellow (Mild impairment) area. It also appears that the patients with baseline mild impairment were more likely to remain close to their baseline cognitive status as seen by the low amount of yellow groups entering the blue/red zones by the end of trials. 
+Prior to running statistical tests, this graph demonstrates:
 
-### Questions to consider for further work
+* Most patients entering the trial with mild impairment according to the MMSE remained within the mild impairment boundaries
+* Both the Severe Impairment and No Impairment patients trended towards Mild Impairment by the end of their trials
+* Active treatments, seen on the left graph, appear to prevent the decline of Mildly Impaired patients when compared to control treatments
 
-* Is there a statistically significant difference comparing Treatment and Control groups?  
-* Are certain baseline severity groups more "cognitively fluid" than other groups? 
-
-
+These three observations would need to be confirmed but this type of graph makes it easy to formulate hypotheses.
 
 
 # How To Reproduce This Graph 
@@ -126,7 +127,8 @@ SimulatedData <- simulateData(
 
 SimulatedData %>%
   select(TrialId, GroupId, Time, OutcomeScore) %>%
-  head()
+  head() %>%
+  kable
 
 ```
 
@@ -320,7 +322,7 @@ p <- ggplot() +
 ```
 
 ## The Final (Simulated) Product
-This graph is not split by Treatment vs Control but to replicate that all you need is to arrange two graphs with filtred data side by side. The libraries ggpubr and grid worked well for this and allow a great deal of customization.
+This graph is not split by Treatment vs Control but to replicate that all you need is to arrange two graphs with filtered data side by side. The libraries ggpubr and grid worked well for this and allow a great deal of customization.
 
 ```{r plot, message=FALSE, warning=FALSE, echo=FALSE}
 p
