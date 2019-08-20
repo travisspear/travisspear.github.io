@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Travis Spear</title>
-    <link>https://travisspear.github.io/post/</link>
+    <link>/post/</link>
     <description>Recent content in Posts on Travis Spear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://travisspear.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Literature Bias in Alzheimer&#39;s Disease Clinical Trials</title>
-      <link>https://travisspear.github.io/post/aan2019/</link>
+      <link>/post/aan2019/</link>
       <pubDate>Sun, 05 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://travisspear.github.io/post/aan2019/</guid>
+      <guid>/post/aan2019/</guid>
       <description>In 2019 I had the opportunity to share some of my research at the American Academy of Neurologists in Philadelphia. Here I’ll provide my poster as well as a few reasons for my excitement about the topic of literature bias in Alzheimer’s Disease.
 What This Research Contributes:The largest review of Alzheimer’s literature focusing on biasExpands on previous Funding bias research in Alzheimer’s DiseaseProvides non-anecdotal exploration into Publishing Journal as a source of biasIntroduces Author Affiliations as a potential biasing factorBackgroundIn clinical research, the Randomized Controlled Trial (RCT) is considered the gold standard due to it’s ability to mitigate the amount of bias introduced by investigators and patients.</description>
     </item>
     
     <item>
       <title>Parallel Plots for Exploratory Analysis of Clinical Trial Literature Reviews</title>
-      <link>https://travisspear.github.io/post/parallel-plots/</link>
+      <link>/post/parallel-plots/</link>
       <pubDate>Sat, 15 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://travisspear.github.io/post/parallel-plots/</guid>
+      <guid>/post/parallel-plots/</guid>
       <description>In the pursuit of more data-centric medical decisions large scale literature reviews are increasingly necessary, however, results of these literature reviews are often hard to depict outside of numeric tables. I’ll be exploring the use of parallel plots as a complementary reporting tool for literature reviews through their ability to display hundreds of clinical trials on a single graph.
 This idea was inspired by an excellent set of plots from 538.</description>
     </item>

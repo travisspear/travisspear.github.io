@@ -16,21 +16,62 @@ library(vitae)
 ```
 
 # Summary
-As a data scientist and analyst, I focus on enhancing company procedures using cutting edge technology in analytics, machine learning, and artificial intelligence. With a strong background in quantitative and language analytics I have the skills needed to help your company thrive with data-driven decisions. Proven ability to solve problems creatively and efficiently in the realms of data mining, visualization, and modeling.
+Ambitious data professional with experience handling data from a variety of disciplines across an organization. Expertise enhancing company data practices through automation, predictive analytics, and 
+artificial intelligence using modern programming languages. Proven ability to communicate the impact of analytical findings to a wide range of audiences through innovative data visualizations. 
 
 
 # Career Interests
  * Natural Language Processing
- * Data Stream/IOT Analytics
  * Medical/Healthcare Applications
+ * Data Stream/IOT Analytics
  * Business Analytics
 
 
 # Core Skills  
 **Primary Languages** : R, Python, SQL  
-**Other Languages** : JavaScript, C#  
-**Frameworks** : Shiny, ggplot, Tensorflow, Keras, Flask, .NET  
-**Competencies** : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics, Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence  
+**Other Languages** : Go, C#, JavaScript  
+**Frameworks** : Shiny, ggplot, Tensorflow, caret, Keras, Flask, .NET  
+**Competencies** : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics, Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence, R Package Development, ETL
+
+
+# Professional Experience
+**2017 - 2019 : Data Analyst / Medical Research Scientist**  
+**MedAware Systems Inc.**  
+
+*Description*
+
+Dynamic, interdisciplinary role with exposure to biostatistics, business, and software development. Responsible for developing solutions to company data problems and driving the implementation of machine learning to enhance data operations.
+
+*Key Responsibilities* 
+  
+  * Automated outlier and anomaly detection to ensure the integrity of customer facing data
+  * Developed supervised and semi-supervised information extraction algorithms to mine data from unstructured text documents
+  * Created and maintained dashboards to monitor ETL processes and track statistical transformations across multiple databases
+  * Advised management on research and marketing opportunities based on trends in existing data
+  * Identified and led the integration of third-party data to facilitate new features to enhance customer experience
+  * Maintained R package of statistical functions, data cleaning tools, and machine learning algorithms
+  *	Managed the integrity and completeness of data acquisition from thousands of clinical trials
+  *	Identified the need for, and assisted in the design of, UI/UX improvements
+  * Represented the company and presented research at major medical conferences
+
+
+**2012 : Undergraduate Research Assistant **  
+**Colorado State University**  
+
+*Key Responsibilities*  
+
+  * Investigated Histone binding kinetics utilizing Fluorescence Resonance Energy Transfer (FRET) Assays of purified proteins
+
+
+# Other Experience
+**2014 : Microbiology Teaching Assistant**  
+**Colorado State University**  
+
+*Key Repsonsibilities*  
+
+  * Lectured large student groups and led review sessions for up to 100 students
+  * Co-authored tests and assisted in grading assignments
+  
 
 # Education  
 **2014-2015 : M.S. Biomedical Science - Colorado State University** 
@@ -41,50 +82,4 @@ As a data scientist and analyst, I focus on enhancing company procedures using c
 
  * Foundational knowledge across the medical sciences
  * Quantitative coursework in Biostatistics and Calculus
-
-# Career Summary
-**2017 - Present : Medical Research Scientist III**  
-**MedAware Systems Inc.**  
-
-
-*Key Responsibilities* 
-
-  *	Managed the integrity and completeness of data acquisition from thousands of clinical trials
-  *	Coded data validation tools and algorithms to comprehensively assess millions of data points
-  *	Managed targeted efforts to address data quality issues under strict deadlines
-  *	Integrated third party data sources into current marketing practices to drive targeted campaigns
-  *	Developed novel algorithms to automatically extract information from unstructured, non-standardized, text formats 
-  *	Pursued novel research topics for publication to be presented at medical conferences
-  *	Produced data visualizations for both clients and internal use
-  *	Identified the need for, and assisted in the design of, UI/UX improvements
-  * Performed quality assurance of C#/.NET Framework web applications
-
-
-**2016 - 2017 : Medical Research Scientist I**  
-**MedAware Systems Inc.**  
-
-*Key Responsibilities* 
-
-  * Facilitated large scale meta-analysis via data acquisition
-  * Participated in meta-analyses containing up to 1100 clinical trials
-  * Improved existing data platforms using domain knowledge to enhance the value of analyzable data
-  * Performed quality assurance of C#/.NET Framework web applications
-
-
-**2014 : Microbiology Teaching Assistant**  
-**Colorado State University**  
-
-*Key Repsonsibilities*  
-
-  * Organized and lectured for groups exceeding 100 students
-  * Assisted in writing interdisciplinary exam questions
-  
-
-
-**2012 : Undergraduate Research Assistant **  
-**Colorado State University**  
-
-*Key Responsibilities*  
-
-  * Investigated Histone binding kinetics utilizing Fluorescence Resonance Energy Transfer (FRET) Assays of purified proteins
 
