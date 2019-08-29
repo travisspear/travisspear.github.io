@@ -1,0 +1,265 @@
+---
+title: Caret for Quick Model Comparison in R
+author: ~
+date: '2019-08-24'
+slug: caret-for-quick-model-comparison-in-r
+categories: []
+tags: []
+comments: no
+images: ~
+---
+
+```{r setup, warning=FALSE, message=FALSE, echo=FALSE}
+library(knitr)
+library(kableExtra)
+```
+
+R has hundreds, if not thousands, of packages providing access to machine learning algorithms. With the variety of naming conventions, function requirements, and output structures provided throughout these packages comparing results can become a nuisance. To streamline the process of testing and comparing models from many R packages, the caret package provides an interface to over 500 popular algorithms aggregated from across the R community.
+
+To demonstrate the ease of testing and comparing multiple model types, I will revisit the Titanic dataset to predict passenger survival using 5 common algorithm types and then create an ensemble model with the outputs. 
+
+## Workspace Set Up 
+```{r workspace, warning=FALSE, message=FALSE, echo=TRUE, results=FALSE}
+
+#### Set Up ----
+library(tidyverse) # For general data manipulation and ggplot
+library(caret) # For all of the machine learning algorithms
+
+# Load the data
+train <- read.csv("../../content/post/data/train.csv")
+
+# Check for issues before you begin modeling: Remove/Impute NA values, Prune Unnecessary Columns, Ensure proper data types
+colSums(is.na(train))
+sapply(train, class)
+
+#### Removing NA Values
+train <- train %>%
+  # Fix NA Age values
+  group_by(Pclass, Sex, Embarked) %>%
+  mutate(
+    Age = ifelse(is.na(Age), mean(Age, na.rm = T), Age)
+  ) %>%
+  ungroup %>% # Remove grouping used for mean ages
+  # Fix NA Embarked values
+  mutate(
+    Embarked = ifelse(is.na(Embarked), names(sort(table(train$Embarked), decreasing = T)[1]), Embarked) %>%
+      as.factor()
+  ) %>%
+  mutate(Survived = as.factor(Survived)) %>%
+  select(Pclass, Sex, Age, SibSp, Parch, Fare, Embarked, Survived)
+
+
+# Recheck NA counts and value types
+colSums(is.na(train))
+sapply(train, class)
+
+```
+
+## Modeling 
+#### Creating Data Subsets
+Using the labeled training titanic dataset, split this further into training (t1) and testing (t2) subsets which will both now contain survival labels. 
+```{r subset, warning=FALSE, message=FALSE, echo=TRUE, results=FALSE}
+
+set.seed(1)
+tSplit <- sample(1:nrow(train), .7*nrow(train))
+t1 <- train[tSplit,]
+t2 <- train[-tSplit,]
+
+```
+
+#### Caret Training Controls
+Models will be evaluated using reapeated cross validation and random hyper-parameter tuning.
+```{r controls, warning=FALSE, message=FALSE, echo=TRUE, results=FALSE}
+fitControl <- trainControl(
+  method = "repeatedcv", 
+  number = 10, 
+  repeats = 3, 
+  search = "random"
+)
+
+```
+
+#### The Five Models  
+Predictions and Confusion Matrices will be generated from the following five model types:
+* Generalized Linear Model  
+* Conditional Inference Tree  
+* Gradient Boosting  
+* Randomforest  
+* Neural Net
+
+```{r models, warning=FALSE, message=FALSE, echo=TRUE, results=FALSE, cache=TRUE}
+
+
+#### Logistic Regression ----
+mod_logReg <- train(
+  Survived ~ .,
+  data = t1,
+  method= "glm",
+  family = "binomial",
+  trControl = fitControl
+)
+
+pred_logReg <- predict(mod_logReg, newdata=t2)
+conf_logReg <- confusionMatrix(data=pred_logReg, t2$Survived)
+
+
+#### Decision Tree ----
+mod_dTree <- train(
+  Survived ~ .,
+  data = t1,
+  method= "ctree",
+  trControl = fitControl
+)
+
+pred_dTree <- predict(mod_dTree, newdata=t2)
+conf_dTree <- confusionMatrix(data=pred_dTree, t2$Survived)
+
+
+#### GBM ----
+mod_GBM <- train(
+  Survived ~ .,
+  data = t1,
+  method= "gbm",
+  trControl = fitControl
+)
+
+pred_GBM <- predict(mod_GBM, newdata=t2)
+conf_GBM <- confusionMatrix(data=pred_GBM, t2$Survived)
+
+
+#### Random Forest ----
+mod_RF <- train(
+  Survived ~ .,
+  data = t1,
+  method= "rf",
+  trControl = fitControl,
+  tuneLength = 15
+)
+
+pred_RF <- predict(mod_RF, newdata=t2)
+conf_RF <- confusionMatrix(data=pred_RF, t2$Survived)
+
+
+#### Neural Net ----
+mod_NNet <- train(
+  Survived ~ .,
+  data = t1,
+  method= "nnet",
+  trControl = fitControl,
+  trace = TRUE,
+  maxit = 100,
+  lineout = 1
+)
+
+pred_NNet <- predict(mod_NNet, newdata=t2)
+conf_NNet <- confusionMatrix(data=pred_NNet, t2$Survived)
+
+
+```
+
+#### Ensemble
+Majority voting of model results will be used for ensembling. In other words, the most common outcome (0/Died, 1/Survived) will be chosen in the ensemble model based on the output of the previous five models.
+
+```{r ensemble, warning=FALSE, message=FALSE, echo=TRUE, results=FALSE}
+
+#### Ensemble ----
+majority <- data.frame(
+  actual = t2$Survived,
+  logReg = pred_logReg,
+  dTree = pred_dTree,
+  GBM = pred_GBM,
+  RF = pred_RF,
+  NNet = pred_NNet
+) %>%
+  mutate(
+    Majority = round((as.numeric(levels(logReg))[logReg] + as.numeric(levels(dTree))[dTree] + as.numeric(levels(GBM))[GBM] + as.numeric(levels(RF))[RF] + as.numeric(levels(NNet))[NNet])/5, 0) %>%
+      as.factor
+  )
+
+conf_majority <- confusionMatrix(data = majority$Majority, reference = t2$Survived)
+
+```
+
+## Model Evaluation
+
+```{r evaluation, warning=FALSE, message=FALSE, echo=FALSE, results=TRUE}
+results = data.frame(
+  ModelType = c("Logistic Regression", 
+                "Decision Tree", 
+                "Gradient Boosting", 
+                "Random Forest", 
+                "Neural Net", 
+                "Ensemble"),
+  Accuracy = c(conf_logReg$overall["Accuracy"], 
+               conf_dTree$overall["Accuracy"],
+               conf_GBM$overall["Accuracy"], 
+               conf_RF$overall["Accuracy"], 
+               conf_NNet$overall["Accuracy"], 
+               conf_majority$overall["Accuracy"]),
+  F1 = c(conf_logReg$byClass["F1"],
+         conf_dTree$byClass["F1"], 
+         conf_GBM$byClass["F1"], 
+         conf_RF$byClass["F1"], 
+         conf_NNet$byClass["F1"], 
+         conf_majority$byClass["F1"])
+) %>%
+  mutate(
+    Accuracy = round(Accuracy, 3),
+    F1 = round(F1, 3)
+  )
+
+
+kable(results) %>%
+  kable_styling(bootstrap_options = "striped", full_width = T)
+
+
+ggplot(
+  data = results
+) +
+  geom_bar(
+    aes(
+      x = ModelType,
+      y = F1
+    ),
+    fill = "#c74644", 
+    color = "black",
+    alpha = .50,
+    stat = "identity"
+  ) +
+  geom_bar(
+    aes(
+      x = ModelType,
+      y = Accuracy
+    ),
+    fill = "#29dfcd",
+    color = "black",
+    alpha = .80,
+    stat = "identity",
+    width = .8
+  ) +
+  geom_text(
+    aes(
+      x = ModelType,
+      y = .5,
+      label = paste0("Accuracy:\n", round(Accuracy, 2))
+    )
+  ) +
+  geom_text(
+    aes(
+      x = ModelType,
+      y = F1+.1,
+      label = paste0("F1:\n", round(F1,2))
+    )
+  ) +
+  theme_minimal() +
+  ggtitle("Comparison of Model Performance", subtitle = "Six Approaches to the Titanic Problem") +
+  xlab("Model Type") + 
+  ylab("Performance") + 
+  ylim(c(0,1)) + 
+  theme(
+    plot.title = element_text(hjust = .5),
+    plot.subtitle = element_text(hjust = .5)
+  )
+
+
+```

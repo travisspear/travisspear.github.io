@@ -6,10 +6,20 @@
     <description>Recent content on Travis Spear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Caret for Quick Model Comparison in R</title>
+      <link>/post/caret-for-quick-model-comparison-in-r/</link>
+      <pubDate>Sat, 24 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/caret-for-quick-model-comparison-in-r/</guid>
+      <description>R has hundreds, if not thousands, of packages providing access to machine learning algorithms. With the variety of naming conventions, function requirements, and output structures provided throughout these packages comparing results can become a nuisance. To streamline the process of testing and comparing models from many R packages, the caret package provides an interface to over 500 popular algorithms aggregated from across the R community.
+To demonstrate the ease of testing and comparing multiple model types, I will revisit the Titanic dataset to predict passenger survival using 5 common algorithm types and then create an ensemble model with the outputs.</description>
+    </item>
     
     <item>
       <title>Literature Bias in Alzheimer&#39;s Disease Clinical Trials</title>

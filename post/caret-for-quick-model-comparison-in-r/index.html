@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#3F88C5">
+	<meta name="msapplication-TileColor" content="#3F88C5">
+
+<meta itemprop="name" content="Caret for Quick Model Comparison in R">
+<meta itemprop="description" content="R has hundreds, if not thousands, of packages providing access to machine learning algorithms. With the variety of naming conventions, function requirements, and output structures provided throughout these packages comparing results can become a nuisance. To streamline the process of testing and comparing models from many R packages, the caret package provides an interface to over 500 popular algorithms aggregated from across the R community.
+To demonstrate the ease of testing and comparing multiple model types, I will revisit the Titanic dataset to predict passenger survival using 5 common algorithm types and then create an ensemble model with the outputs.">
+
+
+<meta itemprop="datePublished" content="2019-08-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-24T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="593">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta property="og:title" content="Caret for Quick Model Comparison in R" />
+<meta property="og:description" content="R has hundreds, if not thousands, of packages providing access to machine learning algorithms. With the variety of naming conventions, function requirements, and output structures provided throughout these packages comparing results can become a nuisance. To streamline the process of testing and comparing models from many R packages, the caret package provides an interface to over 500 popular algorithms aggregated from across the R community.
+To demonstrate the ease of testing and comparing multiple model types, I will revisit the Titanic dataset to predict passenger survival using 5 common algorithm types and then create an ensemble model with the outputs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/caret-for-quick-model-comparison-in-r/" />
+<meta property="article:published_time" content="2019-08-24T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-08-24T00:00:00&#43;00:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Caret for Quick Model Comparison in R"/>
+<meta name="twitter:description" content="R has hundreds, if not thousands, of packages providing access to machine learning algorithms. With the variety of naming conventions, function requirements, and output structures provided throughout these packages comparing results can become a nuisance. To streamline the process of testing and comparing models from many R packages, the caret package provides an interface to over 500 popular algorithms aggregated from across the R community.
+To demonstrate the ease of testing and comparing multiple model types, I will revisit the Titanic dataset to predict passenger survival using 5 common algorithm types and then create an ensemble model with the outputs."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Caret for Quick Model Comparison in R</title>
+	<link rel="stylesheet" href="/css/style.min.dd1a622b355fc7425afc3e30f77d4a71b5cf5af999192113865e5da17ea92b55.css" integrity="sha256-3RpiKzVfx0Ja/D4w931KcbXPWvmZGSEThl5doX6pK1U=">
+	
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="/">Travis Spear</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					<a href="/travisspear_cv/">Resume</a>
+					<a href="/post/">Projects</a>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://www.linkedin.com/in/travis-spear/" target="_blank" rel="noopener" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:travisspear@gmail.com" target="_blank" rel="noopener" title="Email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="/travisspear_cv/">Resume</a></li>
+			<li><a href="/post/">Projects</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Caret for Quick Model Comparison in R</h1>
+		<div class="content">
+			
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>R has hundreds, if not thousands, of packages providing access to machine learning algorithms. With the variety of naming conventions, function requirements, and output structures provided throughout these packages comparing results can become a nuisance. To streamline the process of testing and comparing models from many R packages, the caret package provides an interface to over 500 popular algorithms aggregated from across the R community.</p>
+<p>To demonstrate the ease of testing and comparing multiple model types, I will revisit the Titanic dataset to predict passenger survival using 5 common algorithm types and then create an ensemble model with the outputs.</p>
+<div id="workspace-set-up" class="section level2">
+<h2>Workspace Set Up</h2>
+<pre class="r"><code>#### Set Up ----
+library(tidyverse) # For general data manipulation and ggplot
+library(caret) # For all of the machine learning algorithms
+
+# Load the data
+train &lt;- read.csv(&quot;../../content/post/data/train.csv&quot;)
+
+# Check for issues before you begin modeling: Remove/Impute NA values, Prune Unnecessary Columns, Ensure proper data types
+colSums(is.na(train))
+sapply(train, class)
+
+#### Removing NA Values
+train &lt;- train %&gt;%
+  # Fix NA Age values
+  group_by(Pclass, Sex, Embarked) %&gt;%
+  mutate(
+    Age = ifelse(is.na(Age), mean(Age, na.rm = T), Age)
+  ) %&gt;%
+  ungroup %&gt;% # Remove grouping used for mean ages
+  # Fix NA Embarked values
+  mutate(
+    Embarked = ifelse(is.na(Embarked), names(sort(table(train$Embarked), decreasing = T)[1]), Embarked) %&gt;%
+      as.factor()
+  ) %&gt;%
+  mutate(Survived = as.factor(Survived)) %&gt;%
+  select(Pclass, Sex, Age, SibSp, Parch, Fare, Embarked, Survived)
+
+
+# Recheck NA counts and value types
+colSums(is.na(train))
+sapply(train, class)</code></pre>
+</div>
+<div id="modeling" class="section level2">
+<h2>Modeling</h2>
+<div id="creating-data-subsets" class="section level4">
+<h4>Creating Data Subsets</h4>
+<p>Using the labeled training titanic dataset, split this further into training (t1) and testing (t2) subsets which will both now contain survival labels.</p>
+<pre class="r"><code>set.seed(1)
+tSplit &lt;- sample(1:nrow(train), .7*nrow(train))
+t1 &lt;- train[tSplit,]
+t2 &lt;- train[-tSplit,]</code></pre>
+</div>
+<div id="caret-training-controls" class="section level4">
+<h4>Caret Training Controls</h4>
+<p>Models will be evaluated using reapeated cross validation and random hyper-parameter tuning.</p>
+<pre class="r"><code>fitControl &lt;- trainControl(
+  method = &quot;repeatedcv&quot;, 
+  number = 10, 
+  repeats = 3, 
+  search = &quot;random&quot;
+)</code></pre>
+</div>
+<div id="the-five-models" class="section level4">
+<h4>The Five Models</h4>
+<p>Predictions and Confusion Matrices will be generated from the following five model types:
+* Generalized Linear Model<br />
+* Conditional Inference Tree<br />
+* Gradient Boosting<br />
+* Randomforest<br />
+* Neural Net</p>
+<pre class="r"><code>#### Logistic Regression ----
+mod_logReg &lt;- train(
+  Survived ~ .,
+  data = t1,
+  method= &quot;glm&quot;,
+  family = &quot;binomial&quot;,
+  trControl = fitControl
+)
+
+pred_logReg &lt;- predict(mod_logReg, newdata=t2)
+conf_logReg &lt;- confusionMatrix(data=pred_logReg, t2$Survived)
+
+
+#### Decision Tree ----
+mod_dTree &lt;- train(
+  Survived ~ .,
+  data = t1,
+  method= &quot;ctree&quot;,
+  trControl = fitControl
+)
+
+pred_dTree &lt;- predict(mod_dTree, newdata=t2)
+conf_dTree &lt;- confusionMatrix(data=pred_dTree, t2$Survived)
+
+
+#### GBM ----
+mod_GBM &lt;- train(
+  Survived ~ .,
+  data = t1,
+  method= &quot;gbm&quot;,
+  trControl = fitControl
+)
+
+pred_GBM &lt;- predict(mod_GBM, newdata=t2)
+conf_GBM &lt;- confusionMatrix(data=pred_GBM, t2$Survived)
+
+
+#### Random Forest ----
+mod_RF &lt;- train(
+  Survived ~ .,
+  data = t1,
+  method= &quot;rf&quot;,
+  trControl = fitControl,
+  tuneLength = 15
+)
+
+pred_RF &lt;- predict(mod_RF, newdata=t2)
+conf_RF &lt;- confusionMatrix(data=pred_RF, t2$Survived)
+
+
+#### Neural Net ----
+mod_NNet &lt;- train(
+  Survived ~ .,
+  data = t1,
+  method= &quot;nnet&quot;,
+  trControl = fitControl,
+  trace = TRUE,
+  maxit = 100,
+  lineout = 1
+)
+
+pred_NNet &lt;- predict(mod_NNet, newdata=t2)
+conf_NNet &lt;- confusionMatrix(data=pred_NNet, t2$Survived)</code></pre>
+</div>
+<div id="ensemble" class="section level4">
+<h4>Ensemble</h4>
+<p>Majority voting of model results will be used for ensembling. In other words, the most common outcome (0/Died, 1/Survived) will be chosen in the ensemble model based on the output of the previous five models.</p>
+<pre class="r"><code>#### Ensemble ----
+majority &lt;- data.frame(
+  actual = t2$Survived,
+  logReg = pred_logReg,
+  dTree = pred_dTree,
+  GBM = pred_GBM,
+  RF = pred_RF,
+  NNet = pred_NNet
+) %&gt;%
+  mutate(
+    Majority = round((as.numeric(levels(logReg))[logReg] + as.numeric(levels(dTree))[dTree] + as.numeric(levels(GBM))[GBM] + as.numeric(levels(RF))[RF] + as.numeric(levels(NNet))[NNet])/5, 0) %&gt;%
+      as.factor
+  )
+
+conf_majority &lt;- confusionMatrix(data = majority$Majority, reference = t2$Survived)</code></pre>
+</div>
+</div>
+<div id="model-evaluation" class="section level2">
+<h2>Model Evaluation</h2>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ModelType
+</th>
+<th style="text-align:right;">
+Accuracy
+</th>
+<th style="text-align:right;">
+F1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Logistic Regression
+</td>
+<td style="text-align:right;">
+0.813
+</td>
+<td style="text-align:right;">
+0.855
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Decision Tree
+</td>
+<td style="text-align:right;">
+0.821
+</td>
+<td style="text-align:right;">
+0.856
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gradient Boosting
+</td>
+<td style="text-align:right;">
+0.791
+</td>
+<td style="text-align:right;">
+0.840
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Random Forest
+</td>
+<td style="text-align:right;">
+0.843
+</td>
+<td style="text-align:right;">
+0.879
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neural Net
+</td>
+<td style="text-align:right;">
+0.817
+</td>
+<td style="text-align:right;">
+0.859
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble
+</td>
+<td style="text-align:right;">
+0.832
+</td>
+<td style="text-align:right;">
+0.870
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/post/2019-08-24-caret-for-quick-model-comparison-in-r_files/figure-html/evaluation-1.png" width="672" /></p>
+</div>
+
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2019 <a href="/">Travis Spear</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a>
+			
+		</p>
+	</footer>
+
+
+	<script src="/js/main.min.8f39f24808e9d0a9b02da58c2d2838da859dc0b7bdfadbdb1883aae8b6adacfe.js" integrity="sha256-jznySAjp0KmwLaWMLSg42oWdwLe9+tvbGIOq6LatrP4="></script>
+
+</body>
+
+</html>
