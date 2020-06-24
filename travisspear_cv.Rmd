@@ -16,8 +16,7 @@ library(vitae)
 ```
 
 # Summary
-Ambitious data professional with experience handling data from a variety of disciplines across an organization. Expertise enhancing company data practices through automation, predictive analytics, and 
-artificial intelligence using modern programming languages. Proven ability to communicate the impact of analytical findings to a wide range of audiences through innovative data visualizations. 
+Highly motivated data professional with 4+ years of experience utilizing R and Python for statistics, predictive analytic, and machine learning. Skilled in managing data operations and implementing solutions from collection to modeling. Proven ability to communicate the impact of analytical findings to a wide range of audiences through innovative data visualizations. 
 
 
 # Career Interests
@@ -29,33 +28,46 @@ artificial intelligence using modern programming languages. Proven ability to co
 
 # Core Skills  
 **Primary Languages** : R, Python, SQL  
-**Other Languages** : Go, C#, JavaScript  
-**Frameworks** : Shiny, ggplot, Tensorflow, caret, Keras, Flask, .NET  
-**Competencies** : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics, Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence, R Package Development, ETL
+**Frameworks** : Shiny, ggplot, Tensorflow, caret, Keras, Flask, Django 
+**Competencies** : Data Mining and Cleaning, Data Visualization, Dashboard Development, Business Analytics, Forecasting, Natural Language Processing, Statistics, Experimental Design, Machine Learning. Artificial Intelligence, R Package Development
 
 
 # Professional Experience
-**2017 - 2019 : Data Analyst / Medical Research Scientist**  
+**2019 - Present : Senior Analyst**  
 **MedAware Systems Inc.**  
 
 *Description*
 
-Dynamic, interdisciplinary role with exposure to biostatistics, business, and software development. Responsible for developing solutions to company data problems and driving the implementation of machine learning to enhance data operations.
+Lead analytic developer in a start-up environment. Developed data processing pipelines to streamline meta-analytic report generation for clients. 
 
 *Key Responsibilities* 
   
-  * Automated outlier and anomaly detection to ensure the integrity of customer facing data
-  * Developed supervised and semi-supervised information extraction algorithms to mine data from unstructured text documents
-  * Created and maintained dashboards to monitor ETL processes and track statistical transformations across multiple databases
-  * Advised management on research and marketing opportunities based on trends in existing data
-  * Identified and led the integration of third-party data to facilitate new features to enhance customer experience
-  * Maintained R package of statistical functions, data cleaning tools, and machine learning algorithms
-  *	Managed the integrity and completeness of data acquisition from thousands of clinical trials
-  *	Identified the need for, and assisted in the design of, UI/UX improvements
-  * Represented the company and presented research at major medical conferences
+  * Implemented data cleaning, quality assurance, and report generation scripts using R and SQL to greatly reduce report generation times.
+  * Managed the planning, collection, and analysis of multiple client data sets concurrently.
+  * Authored medical meta-analyses aggregating hundreds of clinical trials.
+  * Developed algorithms to mine features from raw text with upwards of 90% precision.
+  * Mentored junior analysts in R/SQL and led ongoing training efforts.
+  * Deployed Shiny dashboard to track company and project KPI's.
+  
+
+**2016 - 2019 : Data Analyst / Medical Research Scientist**  
+**MedAware Systems Inc.**  
+
+*Description*
+
+Dynamic, interdisciplinary role with exposure to biostatistics, business, and software development.  
+
+*Key Responsibilities* 
+    
+  *	Managed the integrity and completeness of data acquisition from thousands of clinical trials.
+  * Provided analytic support to biostatisticians including data cleaning, modeling, and visualization.
+  * Maintained R package of statistical functions, data cleaning, and quality assurance tools.
+  * Automated outlier and anomaly detection procesess using R to ensure the integrity of customer facing data.
+  * Redesigned data collection framework to enrich analytic capabilities.
+  * Assisted in quality assurance of C#/.NET applications.
 
 
-**2012 : Undergraduate Research Assistant **  
+**2012 : Undergraduate Research Assistant**  
 **Colorado State University**  
 
 *Key Responsibilities*  
@@ -74,12 +86,12 @@ Dynamic, interdisciplinary role with exposure to biostatistics, business, and so
   
 
 # Education  
+**2019-Present : M.S. Data Science - University of Denver** 
+
+
 **2014-2015 : M.S. Biomedical Science - Colorado State University** 
 
- * Advanced coursework in human physiology with a concentration in Neuroscience  
 
 **2010-2014 : B.S Biomedical Science - Colorado State University**
 
- * Foundational knowledge across the medical sciences
- * Quantitative coursework in Biostatistics and Calculus
 
