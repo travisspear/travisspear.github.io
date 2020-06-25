@@ -96,9 +96,9 @@ Dynamic, interdisciplinary role with exposure to biostatistics, business, and so
 
 
 # Projects
-[R/Shiny/SQL - COVID-19 Literature Dashboard](https://travisspear.shinyapps.io/COVID19)
+[R/Shiny/SQL - COVID-19 Dashboard](https://travisspear.shinyapps.io/COVID19)
 
-[R/Shiny - PubMed Literature Network Generator](https://travisspear.shinyapps.io/PubMed_Networks)
+[R/Shiny - PubMed Author Network Generator](https://travisspear.shinyapps.io/PubMed_Networks)
 
 [R/SQL - Literature Bias in alzheimer's Disease (AAN 2019)](/post/aan2019/)
 
