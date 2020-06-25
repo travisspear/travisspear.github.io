@@ -62,7 +62,7 @@ Dynamic, interdisciplinary role with exposure to biostatistics, business, and so
   *	Managed the integrity and completeness of data acquisition from thousands of clinical trials.
   * Provided analytic support to biostatisticians including data cleaning, modeling, and visualization.
   * Maintained R package of statistical functions, data cleaning, and quality assurance tools.
-  * Automated outlier and anomaly detection procesess using R to ensure the integrity of customer facing data.
+  * Automated outlier and anomaly detection processes using R to ensure the integrity of customer facing data.
   * Redesigned data collection framework to enrich analytic capabilities.
   * Assisted in quality assurance of C#/.NET applications.
 
@@ -93,5 +93,14 @@ Dynamic, interdisciplinary role with exposure to biostatistics, business, and so
 
 
 **2010-2014 : B.S Biomedical Science - Colorado State University**
+
+
+# Projects
+[R/Shiny/SQL - COVID-19 Literature Dashboard](https://travisspear.shinyapps.io/COVID19)
+
+[R/Shiny - PubMed Literature Network Generator](https://travisspear.shinyapps.io/PubMed_Networks)
+
+[R/SQL - Literature Bias in alzheimer's Disease (AAN 2019)](/post/aan2019/)
+
 
 
